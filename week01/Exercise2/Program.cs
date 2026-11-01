@@ -13,31 +13,70 @@ class Program
         if ( x < 0 || x > 100)
         {
             Console.WriteLine("This is not a grade percentage.");
+            return;
         }
 
-        else if ( x >= 90)
+        string letter;
+
+        if ( x >= 90)
         {
-            Console.WriteLine("Your grade is A.");
+           letter="A";
         }
 
         else if ( x >= 80)
         {
-            Console.WriteLine("Your grade is B.");
+            letter="B";
         }
 
         else if ( x >= 70)
         {
-            Console.WriteLine("Your grade is C.");
+            letter="C";
         }
 
         else if ( x >= 60)
         {
-            Console.WriteLine("Your grade is D.");
+            letter="D";
         }
 
         else
         {
-            Console.WriteLine("Your grade is F.");
+            letter="F";
+        }
+
+        int lastDigit = x % 10;
+        string sign;
+
+        if (lastDigit >= 7)
+        {
+            sign = "+";
+        }
+        else if (lastDigit < 3)
+        {
+            sign = "-";
+        }
+        else
+        {
+            sign = "";
+        }
+
+        if (letter == "F")
+        {
+            sign = "";    
+        }
+        else if (letter == "A" && x >= 93)
+        {
+            sign = "";     
+        }
+
+        Console.WriteLine($"Your grade is {letter}{sign}.");
+
+        if (x >= 70)
+        {
+            Console.WriteLine("Congratulations, you passed the course!");
+        }
+        else
+        {
+            Console.WriteLine("Keep working hard, and you'll do better next time!");
         }
     }
 }
